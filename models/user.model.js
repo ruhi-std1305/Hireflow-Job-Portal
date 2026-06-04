@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
         enum: ['seeker', 'employer', 'admin'],
         required: true
     },
-    // employer এর company name
+    
     companyName: {
         type: String,
         default: ""
