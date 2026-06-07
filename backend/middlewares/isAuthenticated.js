@@ -11,7 +11,7 @@ export const isAuthenticated = (req, res, next) => {
             });
         }
 
-        // 🔥 Bearer remove করা
+        
         const token = authHeader.split(" ")[1];
 
         const decode = jwt.verify(token, process.env.SECRET_KEY);
