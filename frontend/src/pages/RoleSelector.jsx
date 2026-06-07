@@ -1,3 +1,3 @@
-// role === 'employer' হলে → /employer-dashboard
-// role === 'seeker' হলে → /jobs
-// role === 'admin' হলে → /admin
+// role === 'employer'  /employer-dashboard
+// role === 'seeker'  /jobs
+// role === 'admin'  /admin
