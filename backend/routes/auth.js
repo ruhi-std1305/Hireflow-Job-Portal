@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 
-// 🔥 LOGIN DEBUG (temporary)
+//  LOGIN DEBUG (temporary)
 router.post("/login", (req, res, next) => {
   console.log("🔥 LOGIN HIT");
   console.log("RAW BODY:", req.body);
@@ -14,7 +14,7 @@ router.post("/login", (req, res, next) => {
 });
 
 
-// 🔑 LOGIN ROUTE
+//  LOGIN ROUTE
 router.post("/login", async (req, res) => {
   try {
     console.log("===== LOGIN DEBUG START =====");
@@ -26,7 +26,7 @@ router.post("/login", async (req, res) => {
 
     const { email, password } = req.body;
 
-    // ❌ validation
+    //  validation
     if (!email || !password) {
       return res.status(400).json({
         message: "Something is missing",
@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // 🔍 user find
+    //  user find
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // 🚫 suspended check
+    //  suspended check
     if (user.suspended) {
       return res.status(403).json({
         message: "Account suspended",
@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // 🔐 password check
+    //  password check
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) {
@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // 🎟️ token generate
+    //  token generate
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
