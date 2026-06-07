@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 //  LOGIN DEBUG (temporary)
 router.post("/login", (req, res, next) => {
-  console.log("🔥 LOGIN HIT");
+  console.log(" LOGIN HIT");
   console.log("RAW BODY:", req.body);
   next();
 });
