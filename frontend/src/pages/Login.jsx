@@ -86,7 +86,7 @@ export default function Login() {
               className={`role-btn ${role === r.value ? "active" : ""}`}
               onClick={() => {
                 setRole(r.value);
-                // Admin select korle login mode 
+                
                 if (r.value === "admin") setMode("login");
                 setError("");
               }}
@@ -142,7 +142,7 @@ export default function Login() {
               {loading ? "Logging in..." : "Log in"}
             </button>
 
-            {/* Admin hole "No account? Sign up" signup dekhabe na */}
+            {/* Admin */}
             {role !== "admin" && (
               <div className="auth-switch" style={{ marginTop: "16px" }}>
                 No account?{" "}
@@ -154,7 +154,7 @@ export default function Login() {
           </form>
         )}
 
-        {/* SIGNUP FORM — Admin er jonno dekhabe na */}
+        {/* SIGNUP FORM */}
         {mode === "signup" && role !== "admin" && (
           <form onSubmit={handleSignup}>
             <div className="grid-2">
@@ -191,7 +191,7 @@ export default function Login() {
               />
             </div>
 
-            {/* Employer hole Company name dekhabe */}
+            {/* Employer  */}
             {role === "employer" && (
               <div className="form-group">
                 <label className="form-label">Company name</label>
