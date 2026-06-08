@@ -4,12 +4,14 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Jobs from "./pages/Jobs";
 import EmployerDashboard from "./pages/EmployerDashboard";
 import Admin from "./pages/Admin";
+import HomePage from "./HomePage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+       
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/jobs" element={
           <ProtectedRoute><Jobs /></ProtectedRoute>
