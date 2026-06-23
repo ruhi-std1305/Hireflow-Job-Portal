@@ -8,13 +8,13 @@ import {
 
 const router = express.Router();
 
-// GET  /api/companies?search=keyword
+
 router.get("/", getAllCompanies);
 
-// GET  /api/companies/:id   (company detail + open jobs)
+
 router.get("/:id", getCompanyById);
 
-// POST /api/companies       (employer/admin only)
+
 router.post("/", isAuthenticated, registerCompany);
 
 export default router;
