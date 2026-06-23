@@ -102,9 +102,9 @@ export const login = async (req, res) => {
             .json({
                 message: `Welcome back ${safeUser.fullname}`,
                 user: safeUser,
-                token: token,           // ✅ frontend localStorage এ save করে
-                role: safeUser.role,    // ✅
-                name: safeUser.fullname, // ✅
+                token: token,           
+                role: safeUser.role,    
+                name: safeUser.fullname, 
                 success: true
             });
 
