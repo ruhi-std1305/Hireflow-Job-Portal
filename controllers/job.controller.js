@@ -1,7 +1,7 @@
 
 import { Job } from "../models/job.model.js";
 
-// Employer/Admin job post korbe
+
 export const postJob = async (req, res) => {
     try {
         const { title, description, requirements, salary, location, jobType, experienceLevel, position, companyId } = req.body;
@@ -38,7 +38,7 @@ export const postJob = async (req, res) => {
     }
 };
 
-// Job listings + search (student side)
+
 export const getAllJobs = async (req, res) => {
     try {
         const keyword = req.query.keyword || "";
@@ -69,7 +69,7 @@ export const getAllJobs = async (req, res) => {
     }
 };
 
-// Single job details
+
 export const getJobById = async (req, res) => {
     try {
         const jobId = req.params.id;
@@ -90,7 +90,7 @@ export const getJobById = async (req, res) => {
     }
 };
 
-// Employer er sob posted jobs
+
 export const getAdminJobs = async (req, res) => {
     try {
         const adminId = req.id;
