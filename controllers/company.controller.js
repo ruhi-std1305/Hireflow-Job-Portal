@@ -1,8 +1,8 @@
 
-// backend/controllers/company.controller.js
+
 import { Company } from "../models/company.model.js";
 
-// Employer company register korbe
+
 export const registerCompany = async (req, res) => {
     try {
         const { companyName } = req.body;
@@ -27,7 +27,7 @@ export const registerCompany = async (req, res) => {
     }
 };
 
-// Login kora employer er shob company
+
 export const getCompany = async (req, res) => {
     try {
         const userId = req.id;
@@ -39,7 +39,7 @@ export const getCompany = async (req, res) => {
     }
 };
 
-// Sob company (public - job seekers er jonno)
+
 export const getAllCompanies = async (req, res) => {
     try {
         const companies = await Company.find();
@@ -49,8 +49,6 @@ export const getAllCompanies = async (req, res) => {
         return res.status(500).json({ message: "Server error", success: false });
     }
 };
-
-// Single company by ID
 export const getCompanyById = async (req, res) => {
     try {
         const company = await Company.findById(req.params.id);
@@ -64,7 +62,7 @@ export const getCompanyById = async (req, res) => {
     }
 };
 
-// Company update (logo, description, etc.)
+
 export const updateCompany = async (req, res) => {
     try {
         const { name, description, website, location } = req.body;
