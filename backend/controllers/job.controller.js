@@ -1,7 +1,6 @@
 import { Job }         from "../models/job.model.js";
 import { Application } from "../models/application.model.js";
 
-// ─── POST /api/jobs ───────────────────────────────────────────────────────────
 export const postJob = async (req, res) => {
   try {
     const {
@@ -34,7 +33,7 @@ export const postJob = async (req, res) => {
   }
 };
 
-// ─── GET /api/jobs ────────────────────────────────────────────────────────────
+
 export const getAllJobs = async (req, res) => {
   try {
     const keyword = req.query.keyword || "";
@@ -60,8 +59,7 @@ export const getAllJobs = async (req, res) => {
   }
 };
 
-// ─── GET /api/jobs/admin ──────────────────────────────────────────────────────
-// Employer dashboard-এর জন্য — নিজের posted jobs + applicant count
+
 export const getAdminJobs = async (req, res) => {
   try {
     const jobs = await Job.find({ created_by: req.id })
@@ -93,7 +91,7 @@ export const getAdminJobs = async (req, res) => {
   }
 };
 
-// ─── GET /api/jobs/:id ────────────────────────────────────────────────────────
+
 export const getJobById = async (req, res) => {
   try {
     const job = await Job.findById(req.params.id).populate("company");
