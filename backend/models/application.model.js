@@ -26,7 +26,7 @@ const applicationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// একই user একই job-এ দুইবার apply করতে পারবে না
+
 applicationSchema.index({ job: 1, applicant: 1 }, { unique: true });
 
 export const Application = mongoose.model("Application", applicationSchema);
