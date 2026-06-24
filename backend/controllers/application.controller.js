@@ -29,7 +29,7 @@ export const applyToJob = async (req, res) => {
       coverLetter: coverLetter || "",
     });
 
-    // Job model-এর applications array-এ push
+  
     await Job.findByIdAndUpdate(jobId, {
       $push: { applications: application._id },
     });
