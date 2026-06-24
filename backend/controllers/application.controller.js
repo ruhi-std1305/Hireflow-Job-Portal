@@ -1,13 +1,11 @@
 import { Application } from "../models/application.model.js";
 import { Job }         from "../models/job.model.js";
 
-// ─── POST /api/applications/apply/:jobId ─────────────────────────────────────
-// Job Seeker: একটা job-এ apply করা
 export const applyToJob = async (req, res) => {
   try {
     const { jobId }       = req.params;
     const { coverLetter } = req.body;
-    const applicantId     = req.id; // isAuthenticated থেকে আসে
+    const applicantId     = req.id; 
 
     const job = await Job.findById(jobId);
     if (!job) {
@@ -52,8 +50,7 @@ export const applyToJob = async (req, res) => {
   }
 };
 
-// ─── GET /api/applications/me ─────────────────────────────────────────────────
-// Job Seeker: আমার সব applications
+
 export const getMyApplications = async (req, res) => {
   try {
     const applications = await Application.find({ applicant: req.id })
@@ -67,7 +64,7 @@ export const getMyApplications = async (req, res) => {
       })
       .sort({ createdAt: -1 });
 
-    // Frontend-এর ApplicationCard shape-এ format
+    
     const formatted = applications.map((app) => ({
       id:              app._id,
       jobId:           app.job?._id,
@@ -90,8 +87,6 @@ export const getMyApplications = async (req, res) => {
   }
 };
 
-// ─── GET /api/applications/job/:jobId ─────────────────────────────────────────
-// Employer: একটা job-এর সব applicants
 export const getApplicantsByJob = async (req, res) => {
   try {
     const { jobId } = req.params;
@@ -101,7 +96,7 @@ export const getApplicantsByJob = async (req, res) => {
       return res.status(404).json({ message: "Job not found.", success: false });
     }
 
-    // Ownership check
+    
     if (job.created_by.toString() !== req.id) {
       return res
         .status(403)
@@ -135,8 +130,7 @@ export const getApplicantsByJob = async (req, res) => {
   }
 };
 
-// ─── PATCH /api/applications/:applicationId/status ────────────────────────────
-// Employer: applicant-এর status update
+
 export const updateApplicationStatus = async (req, res) => {
   try {
     const { applicationId } = req.params;
@@ -152,7 +146,7 @@ export const updateApplicationStatus = async (req, res) => {
       return res.status(404).json({ message: "Application not found.", success: false });
     }
 
-    // Ownership check
+    
     if (application.job.created_by.toString() !== req.id) {
       return res.status(403).json({ message: "Unauthorized.", success: false });
     }
