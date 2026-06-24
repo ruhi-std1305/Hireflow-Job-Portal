@@ -12,7 +12,7 @@ export const applyToJob = async (req, res) => {
       return res.status(404).json({ message: "Job not found.", success: false });
     }
 
-    // Duplicate apply চেক
+  
     const alreadyApplied = await Application.findOne({
       job: jobId,
       applicant: applicantId,
