@@ -35,6 +35,7 @@ export default function Login() {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("name", res.data.name);
+      localStorage.setItem("email", loginForm.email);
 
       if (res.data.role === "admin") navigate("/admin");
       else if (res.data.role === "employer") navigate("/employer-dashboard");
