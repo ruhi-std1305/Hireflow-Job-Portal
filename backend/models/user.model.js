@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         enum: ['seeker', 'employer', 'admin'],
         required: true
     },
+    suspended: {
+        type: Boolean,
+        default: false
+    },
     
     companyName: {
         type: String,
@@ -27,6 +31,8 @@ const userSchema = new mongoose.Schema({
     },
     profile: {
         bio: { type: String },
+        title: { type: String, default: "" },
+        location: { type: String, default: "" },
         skills: [{ type: String }],
         resume: { type: String },
         resumeOriginalName: { type: String },
